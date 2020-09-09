@@ -54,3 +54,4 @@ Preferably we should use `00` if the Unit specifier was changed. If present, thi
 ### Tools
 1: [pngtools](https://manpages.debian.org/jessie/pngtools/index.html)<br />
 2: [Automated Tool](https://github.com/sherlly/PCRT) >>> Won't work if multiple changes are done in the data.<br />
+3: [GUI Hex Editor](https://wiki.gnome.org/Apps/Ghex)
