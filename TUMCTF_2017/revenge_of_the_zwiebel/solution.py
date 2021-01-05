@@ -85,8 +85,6 @@ while True:
 	else:
 		flag[offset] = flag[offset] | and_value
 
-	# print(f"Offset {offset} And_Value {and_value} Not {not_check}")
-
 	r2.cmd("dr rcx = 0xff")			# Set value for jecxz
 	r2.cmd("ds")					# Follow the jump
 
