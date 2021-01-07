@@ -1,5 +1,5 @@
 from z3 import *
-flag_chars = [BitVec(f'{i}', 8) for i in range(24)]
+flag_chars = [BitVec(f'{i}', 8) for i in range(24)] # Length of flag
 s = Solver()
 
 for i in range(24):
