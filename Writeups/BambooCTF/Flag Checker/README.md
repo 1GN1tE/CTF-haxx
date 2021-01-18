@@ -6,7 +6,7 @@
 - Bruteforce flag check
 
 ## Solution
-[script]()
+[script](https://github.com/1GN1tE/CTF-haxx/blob/master/Writeups/BambooCTF/Flag%20Checker/sol.py)
 
 - Made some changes of same characters for diff values
 
