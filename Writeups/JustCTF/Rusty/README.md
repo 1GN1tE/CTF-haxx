@@ -61,3 +61,70 @@ Are you sure??? Try somewhere else.
 So this gives a fake flag.
 
 ### DOS
+
+In Ghidra we can see a very long(4368 bytes) DOS Stub.
+<p align="center"><img src="dos_stub.png"></p>
+
+So I ran the program in Dosbox.
+<p align="center"><img src="doxbox_rusty.gif"></p>
+
+Loaded the binary in IDA
+<p align="center"><img src="IDA_Load.png"></p>
+
+IDA gives us a disassm... We can the see the program reads keyboard input with the BIOS Interrupt Call `int 16h`
+<p align="center"><img src="keyboard.png"></p>
+
+The keys that are checked:
+- `Esc` Key (0x1b)        : Exits the program
+- `Enter` Key (0xd)       : Jumps to validation of flag function (Educated Guess)
+- `Backspace` Key (0x8)   : Probably removes the last character (Educated Guess)
+
+The validation part:
+<p align="center"><img src="validate.png"></p>
+
+Some xor operations with some encrypted data is going on.
+Encrypted Data:
+<p align="center"><img src="dataenc.png"></p>
+
+The input(to get flag) length is 0x27
+```
+mov     cx, cs:word_10088 ; 0x27
+sub     cx, bx
+```
+
+Which roughly translates to:
+```python
+enc = [0x3E, 0x49, 0x26, 0x52, 0x45, 0x22, 0x42, 0x10, 0x66, 0x0B, 0x6C, 0x6, 0x0D, 0x50, 0x0F, 0x4C, 0x25, 0x4C, 0x3F, 0x12, 0x56, 0x3, 0x20, 0x5A, 0x14, 0x61, 0x4A, 0x3F, 0x5D, 0x51, 0x12, 0x5C, 0x18, 0x5, 0x43, 0x39, 0x4F, 0x32, 0x0A, 0x24]
+
+inp = "" # Something to get flag
+
+for i in range(0x27):
+  for j in range(i+1):
+    enc[i] = ord(inp[j]) ^ enc[i]
+```
+
+This new enc probably be the flag. We know the flag it starts with `justCTF{`. So, we can get the 1st 8 chars of the input.
+
+```python
+enc = [0x3E, 0x49, 0x26, 0x52, 0x45, 0x22, 0x42, 0x10, 0x66, 0x0B, 0x6C, 0x6, 0x0D, 0x50, 0x0F, 0x4C, 0x25, 0x4C, 0x3F, 0x12, 0x56, 0x3, 0x20, 0x5A, 0x14, 0x61, 0x4A, 0x3F, 0x5D, 0x51, 0x12, 0x5C, 0x18, 0x5, 0x43, 0x39, 0x4F, 0x32, 0x0A, 0x24]
+
+inp = "justCTF{"
+flag = [0] * len(inp)
+
+for i in range(len(inp)):
+  flag[i] = ord(inp[i]) ^ enc[i]
+  for j in range(i):
+    flag[i] = flag[j] ^ flag[i]
+
+print("".join([chr(c) for c in flag]))
+```
+
+Which returns `This pro`
+
+Educated Guess: Input --> `This program cannot be run in DOS mode.` which has length 0x27.
+
+Giving those in the DOSBOX we get the flag.
+<p align="center"><img src="flag.gif"></p>
+
+## Flag
+> justCTF{just_a_rusty_old_DOS_stub_task}
