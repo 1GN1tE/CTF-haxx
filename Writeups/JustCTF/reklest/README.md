@@ -1,6 +1,13 @@
-# Reklest
-- Rust Binary for MacOS
+# reklest
+
+In our infrastructure it works perfectly but it takes time
+http://reklest.web.jctf.pro
+
+Attachments:
+* [reklest](./reklest)
+
 ## Solution
+- Rust Binary for MacOS
 - It generates a hardcoded string by xor
 - It base64 decodes the string and performs `get`
 ```python
