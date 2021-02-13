@@ -1,5 +1,8 @@
 # Rusty
-> Looking at rust code in disassembler/decompiler hurts, so... look somewhere else
+Looking at Rust code in disassembler/decompiler hurts, so... look somewhere else.
+
+Attachments:
+* [rusty.exe](./rusty.exe)
 
 ## Solution
 I was unable to solve this during the CTF. This `exe` has 2 code segments.
