@@ -78,6 +78,7 @@ The keys that are checked:
 - `Esc` Key (0x1b)        : Exits the program
 - `Enter` Key (0xd)       : Jumps to validation of flag function (Educated Guess)
 - `Backspace` Key (0x8)   : Probably removes the last character (Educated Guess)
+<p align="center"><img src="keystrokes.png"></p>
 
 The validation part:
 <p align="center"><img src="validate.png"></p>
