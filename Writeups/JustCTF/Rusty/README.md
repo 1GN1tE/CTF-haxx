@@ -50,7 +50,7 @@ Then it checks every char of our flag on a looping algo
                *(short *)((longlong)ppuVar6 + lVar3 + -0xe));
 ```
 
-We get the values of the `ppuVar6` by using IDA debugging. Then we write a [solver script](https://github.com/1GN1tE/CTF-haxx/blob/master/Writeups/JustCTF/Rusty/solver.py) in `z3`.
+We get the values of the `ppuVar6` by using IDA debugging. Then we write a [solver script](./solver.py) in `z3`.
 
 We get this `jctf{this_IS_not_the_|>_you_are_looking_4_FAKEFLAG!!!!}` as the output.
 Using this is the binary gives this.
