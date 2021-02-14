@@ -237,6 +237,7 @@ if (
 {
 	return 0;
 }
+// End of sub_4280 function
 
 if (flag[strlen(flag)-1] != '}')
 	return 0;
