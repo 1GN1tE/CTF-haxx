@@ -33,11 +33,11 @@ else
 
 RIGHT:
 cout << "Ok?";
-return
+return;
 
 ERROR:
 // Some error printing stuff
-return
+return;
 ```
 
 So our flag is right if it is `asia` or if the function `flag_check`(`sub_4960`). As we know the flag starts with `justCTF{` we analyze `flag_check`
