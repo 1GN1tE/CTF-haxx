@@ -33,11 +33,11 @@ with open('./backup_decryptor.pyc', 'rb') as f:
 def convert_code(co_code, map_opcodes):
 	new_co_code = b""
 	for i in range(0, len(co_code)):
-		if i & 1:											# Every other byte
+		if i & 1:								# Every other byte
 			new_co_code += p8(co_code[i])					# Odd byte is constant
 		else:
 			if co_code[i] in map_opcodes:
-				new_co_code += p8(map_opcodes[co_code[i]])	# Even byte is opcode
+				new_co_code += p8(map_opcodes[co_code[i]])		# Even byte is opcode
 			else:
 				new_co_code += p8(co_code[i])				# If not opcode then it's constant
 	return new_co_code
@@ -49,7 +49,7 @@ def recurse_convert_all(code_obj, map_opcodes):
 		if type(const) == types.CodeType:					# If it's code type it recursively converts the code type
 			new_const = recurse_convert_all(const, map_opcodes)
 			new_co_consts.append(new_const)
-		else:												# Else it just appends to the new code block
+		else:									# Else it just appends to the new code block
 			new_co_consts.append(const)
 	
 	new_code_obj = code_obj.replace(co_code=new_co_code, co_consts=tuple(new_co_consts))
