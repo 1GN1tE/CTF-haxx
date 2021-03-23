@@ -1,11 +1,11 @@
 from z3 import *
 flag_len = 40
-flag = [BitVec(f'{i}', 8) for i in range(flag_len)] # Length of flag
+flag_chars = [BitVec(f'{i}', 8) for i in range(flag_len)] # Length of flag
 s = Solver()
 
 for i in range(flag_len):
-	s.add(flag[i]>44)
-	s.add(flag[i]<126)
+	s.add(flag_chars[i]>44)
+	s.add(flag_chars[i]<126)
 
 
 # Other consraints and equations
